@@ -55,7 +55,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = [
         {
             "role": "system",
-            "content": "You are a cruise booking chatbot with Saltie. Give all information regarding cruise booking and cruise realted only."
+            "content": entered_text
         }
     ]
 
