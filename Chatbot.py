@@ -9,6 +9,17 @@ key = os.getenv('OPENAI_API_KEY')
 if not key:
     st.error("API key is missing. Please set it in the .env file.")
     st.stop()
+
+# Set up the sidebar
+st.sidebar.title("Saltie")
+st.sidebar.write("Cruise booking app ")
+
+# Add an image to the sidebar
+st.sidebar.image(
+    r"C:\Users\ManjunathSirur\OneDrive - ZapCom Solutions Pvt. ltd\Desktop\Saltie\Streamlit_Saltie_bot\saltie2.jpg",  # Replace with the path to your image
+    width=100  # Adjust the width of the image
+)
+
 st.sidebar.markdown("# LLM settings")
 add_selectbox = st.sidebar.selectbox(
     'Choose the LLM you prefer',
@@ -18,7 +29,7 @@ add_selectbox = st.sidebar.selectbox(
 # Show title and description.
 st.title("💬 Saltie")
 st.write(
-    "Cruise bookings made easy"
+    "A platform powered by AI and analytics enabling you to positively impact employee wellness and productivity through a reward solution,  high value leisure travel offerings, community give back options and personalized shopping tools."
 )
 
 # Ask user for their OpenAI API key via `st.text_input`.
