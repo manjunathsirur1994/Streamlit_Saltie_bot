@@ -1,8 +1,14 @@
-
-
 import streamlit as st
 from openai import OpenAI
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
+key = os.getenv('OPENAI_API_KEY')
+
+if not key:
+    st.error("API key is missing. Please set it in the .env file.")
+    st.stop()
 st.sidebar.markdown("# LLM settings")
 add_selectbox = st.sidebar.selectbox(
     'Choose the LLM you prefer',
