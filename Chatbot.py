@@ -16,7 +16,7 @@ st.sidebar.write("Cruise booking app ")
 
 # Add an image to the sidebar
 st.sidebar.image(
-    r"C:\Users\ManjunathSirur\OneDrive - ZapCom Solutions Pvt. ltd\Desktop\Saltie\Streamlit_Saltie_bot\saltie2.jpg",  # Replace with the path to your image
+    r"saltie2.jpg",  # Replace with the path to your image
     width=100  # Adjust the width of the image
 )
 
