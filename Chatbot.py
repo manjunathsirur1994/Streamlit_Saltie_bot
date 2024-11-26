@@ -15,7 +15,7 @@ default_prompt = 'You are a cruise booking chatbot with Saltie. Give all informa
 try:
     with open("prompt.txt", "r") as file:
         entered_text = file.read()
-        # st.write(f"Received prompt: {entered_text}")
+        st.write(f"current prompt: {entered_text}")
 except FileNotFoundError:
     st.write("No prompt received yet.")
     entered_text = default_prompt
