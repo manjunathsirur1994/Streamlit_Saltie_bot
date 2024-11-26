@@ -33,7 +33,7 @@ st.sidebar.image(
 st.sidebar.markdown("# LLM settings")
 add_selectbox = st.sidebar.selectbox(
     'Choose the LLM you prefer',
-    ('OpenAI', 'OLLAMA', 'Anthropic','Claude')
+    ('gpt-4o-mini by OpenAI', 'Ollama2 by Meta', 'Anthropic','Gemini by Google')
 )
 
 # Show title and description.
