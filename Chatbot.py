@@ -37,7 +37,7 @@ add_selectbox = st.sidebar.selectbox(
 )
 
 # Show title and description.
-st.title("💬 Saltie")
+st.title("💬 Saltie's AI assistant")
 st.write(
     "A platform powered by AI and analytics enabling you to positively impact employee wellness and productivity through a reward solution,  high value leisure travel offerings, community give back options and personalized shopping tools."
 )
