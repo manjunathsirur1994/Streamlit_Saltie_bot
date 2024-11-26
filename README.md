@@ -1,19 +1,5 @@
-# 💬 Chatbot template
+# 💬 Chatbot for a cruise line
 
-A simple Streamlit app that shows how to build a chatbot using OpenAI's GPT-3.5.
+A simple Streamlit app that shows how to use a GPT model to build a cruise line booking AI assistant. It can book, cancel, reschedule, or provide a general query related to cruises and cruise bookings. 
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatbot-template.streamlit.app/)
-
-### How to run it on your own machine
-
-1. Install the requirements
-
-   ```
-   $ pip install -r requirements.txt
-   ```
-
-2. Run the app
-
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+Current hosted in AWS EC2: http://54.157.138.26:5000/
