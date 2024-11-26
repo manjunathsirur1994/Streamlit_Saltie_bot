@@ -10,6 +10,16 @@ if not key:
     st.error("API key is missing. Please set it in the .env file.")
     st.stop()
 
+default_prompt = 'You are a cruise booking chatbot with Saltie. Give all information regarding cruise booking and cruise realted only.'
+# Read the text from the file
+try:
+    with open("prompt.txt", "r") as file:
+        entered_text = file.read()
+        # st.write(f"Received prompt: {entered_text}")
+except FileNotFoundError:
+    st.write("No prompt received yet.")
+    entered_text = default_prompt
+
 # Set up the sidebar
 st.sidebar.title("Saltie")
 st.sidebar.write("Cruise booking app ")
@@ -45,7 +55,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = [
         {
             "role": "system",
-            "content": "You are a cruise booking chatbot with Saltie. Give all information, and don't redirect them to website."
+            "content": "You are a cruise booking chatbot with Saltie. Give all information regarding cruise booking and cruise realted only."
         }
     ]
 
