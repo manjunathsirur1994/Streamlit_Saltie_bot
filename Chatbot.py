@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 import configuration
 load_dotenv()
+from streamlit_card import card
 
 # to make default page size to wide
 
@@ -32,6 +33,13 @@ add_selectbox = st.sidebar.selectbox(
 # Show title and description.
 st.title(f"💬 {configuration.chatbot_name}")
 st.write(configuration.Subtitle)
+
+#---------------------------------------------------------------
+
+with st.expander('Show current prompt'):
+  st.write(f'{configuration.Prompt}')
+
+#---------------------------------------------------------------
 
 # Ask user for their OpenAI API key via `st.text_input`.
 # Alternatively, you can store the API key in `./.streamlit/secrets.toml` and access it
