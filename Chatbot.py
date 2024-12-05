@@ -4,7 +4,6 @@ import os
 from dotenv import load_dotenv
 import configuration
 load_dotenv()
-from streamlit_card import card
 
 # to make default page size to wide
 
