@@ -2,7 +2,15 @@ import streamlit as st
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
+import configuration
 load_dotenv()
+
+# to make default page size to wide
+
+def wide_space_default():
+    st.set_page_config(layout='wide')
+
+wide_space_default()
 
 key = os.getenv('OPENAI_API_KEY')
 
@@ -10,25 +18,10 @@ if not key:
     st.error("API key is missing. Please set it in the .env file.")
     st.stop()
 
-default_prompt = 'You are a cruise booking chatbot with Saltie. Give all information regarding cruise booking and cruise realted only.'
-# Read the text from the file
-try:
-    with open("prompt.txt", "r") as file:
-        entered_text = file.read()
-        # st.write(f"current prompt: {entered_text}")
-except FileNotFoundError:
-    st.write("No prompt received yet.")
-    entered_text = default_prompt
+entered_text = configuration.Prompt
 
 # Set up the sidebar
-st.sidebar.title("Saltie")
-st.sidebar.write("Cruise booking app ")
-
-# Add an image to the sidebar
-st.sidebar.image(
-    r"saltie2.jpg",  # Replace with the path to your image
-    width=100  # Adjust the width of the image
-)
+st.sidebar.title("Configurations")
 
 st.sidebar.markdown("# LLM settings")
 add_selectbox = st.sidebar.selectbox(
@@ -37,10 +30,8 @@ add_selectbox = st.sidebar.selectbox(
 )
 
 # Show title and description.
-st.title("💬 Saltie's AI assistant")
-st.write(
-    "A platform powered by AI and analytics enabling you to positively impact employee wellness and productivity through a reward solution,  high value leisure travel offerings, community give back options and personalized shopping tools."
-)
+st.title(f"💬 {configuration.chatbot_name}")
+st.write(configuration.Subtitle)
 
 # Ask user for their OpenAI API key via `st.text_input`.
 # Alternatively, you can store the API key in `./.streamlit/secrets.toml` and access it
