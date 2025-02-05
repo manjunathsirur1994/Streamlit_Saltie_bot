@@ -4,9 +4,9 @@ import os
 from dotenv import load_dotenv
 import configuration
 load_dotenv()
+import base64
 
 # to make default page size to wide
-
 def wide_space_default():
     st.set_page_config(layout='wide')
 
@@ -26,7 +26,7 @@ st.sidebar.title("Configurations")
 st.sidebar.markdown("# LLM settings")
 add_selectbox = st.sidebar.selectbox(
     'Choose the LLM you prefer',
-    ('gpt-4o-mini by OpenAI', 'Ollama2 by Meta', 'Anthropic','Gemini by Google')
+    ('gpt-4o-mini by OpenAI', 'Ollama2 by Meta', 'Anthropic', 'Gemini by Google')
 )
 
 # Show title and description.
@@ -40,9 +40,23 @@ with st.expander('Show current prompt'):
 
 #---------------------------------------------------------------
 
-# Ask user for their OpenAI API key via `st.text_input`.
-# Alternatively, you can store the API key in `./.streamlit/secrets.toml` and access it
-# via `st.secrets`, see https://docs.streamlit.io/develop/concepts/connections/secrets-management
+# Add background image using CSS
+def set_background(image_file):
+    with open(image_file, "rb") as f:
+        encoded_string = base64.b64encode(f.read()).decode()
+    
+    page_bg_img = f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/png;base64,{encoded_string}");
+        background-size: cover;
+    }}
+    </style>
+    """
+    st.markdown(page_bg_img, unsafe_allow_html=True)
+
+# Set background image (Replace 'background.jpg' with your actual image file)
+set_background("rr.jpg")
 
 # Create an OpenAI client.
 client = OpenAI(api_key=key)
@@ -75,10 +89,7 @@ if prompt := st.chat_input("Type in your queries here! "):
     # Generate a response using the OpenAI API.
     stream = client.chat.completions.create(
         model="gpt-4o-mini",
-        messages=[
-            {"role": m["role"], "content": m["content"]}
-            for m in st.session_state.messages
-        ],
+        messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages],
         stream=True,
     )
 
