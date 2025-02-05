@@ -40,23 +40,6 @@ with st.expander('Show current prompt'):
 
 #---------------------------------------------------------------
 
-# Add background image using CSS
-def set_background(image_file):
-    with open(image_file, "rb") as f:
-        encoded_string = base64.b64encode(f.read()).decode()
-    
-    page_bg_img = f"""
-    <style>
-    .stApp {{
-        background-image: url("data:image/png;base64,{encoded_string}");
-        background-size: cover;
-    }}
-    </style>
-    """
-    st.markdown(page_bg_img, unsafe_allow_html=True)
-
-# Set background image (Replace 'background.jpg' with your actual image file)
-set_background("rr.jpg")
 
 # Create an OpenAI client.
 client = OpenAI(api_key=key)
