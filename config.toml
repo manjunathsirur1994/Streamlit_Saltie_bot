@@ -1,2 +1,10 @@
 [theme]
 base="light"
+
+[server]
+enableCORS = false
+enableXsrfProtection = false
+
+[browser]
+serverAddress = "0.0.0.0"
+gatherUsageStats = false
