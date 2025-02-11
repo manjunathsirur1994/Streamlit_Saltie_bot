@@ -1,6 +1,8 @@
 import streamlit as st
 import configuration
 
+config = configuration.load_config()
+
 # Function to update the configuration file
 def update_config(key, value):
     config = configuration.load_config()
@@ -18,7 +20,7 @@ with st.container(border=True):
     st.write("### Bot Name")
     
     with st.expander("Current bot name"):
-        st.write(configuration.chatbot_name)
+        st.write(config['chatbot_name'])
 
     bot_name = st.text_input("Enter the Chatbot's name to change it and save it.")
     
@@ -30,7 +32,7 @@ with st.container(border=True):
     st.write("### Bot Subtitle")
     
     with st.expander("Current subtitle"):
-        st.write(configuration.Subtitle)
+        st.write(config['Subtitle'])
 
     sub = st.text_input("Enter the subtitle to change it and save it.")
 
@@ -43,7 +45,7 @@ st.write('--------------')
 
 with st.container(border=True):
     with st.expander("Show current prompt"):
-        st.write(configuration.Prompt)
+        st.write(config['Prompt'])
 
     text_input = st.text_input("Enter your prompt to change it.")
 
