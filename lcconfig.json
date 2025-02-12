@@ -1,0 +1,8 @@
+{
+    "username": "postgres",
+    "password": "3140",
+    "host": "localhost",
+    "port": 5432,
+    "uri": "postgresql+psycopg2",
+    "DB": "Netflix"
+}
