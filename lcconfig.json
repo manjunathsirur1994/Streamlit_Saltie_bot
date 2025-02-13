@@ -1,8 +1,8 @@
 {
-    "username": "postgres",
-    "password": "3140",
-    "host": "localhost",
+    "username": "chatbotuser",
+    "password": "chatbot123",
+    "host": "chatbot-db.c9fmepiiqg6o.us-east-1.rds.amazonaws.com",
     "port": 5432,
     "uri": "postgresql+psycopg2",
-    "DB": "Netflix"
+    "DB": "netflix"
 }
