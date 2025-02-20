@@ -11,7 +11,7 @@ config = configuration.load_config()
 
 st.set_page_config(layout='wide')
 
-st.title(f"💬 {config['chatbot_name']}")
+st.title(f"{config['chatbot_name']}")
 st.write(config["Subtitle"])
 
 key = os.getenv("OPENAI_API_KEY")
