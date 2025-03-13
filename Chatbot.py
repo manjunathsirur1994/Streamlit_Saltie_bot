@@ -35,7 +35,7 @@ for message in st.session_state.messages:
 if prompt := st.chat_input("Type in your queries here! "):
     st.session_state.messages.append({"role": "user", "content": prompt})
     
-    with st.chat_message("user"):
+    with st.chat_message("user", avatar="output (5).png"):
         st.markdown(prompt)
 
     stream = client.chat.completions.create(
@@ -44,6 +44,6 @@ if prompt := st.chat_input("Type in your queries here! "):
         stream=True,
     )
 
-    with st.chat_message("assistant"):
+    with st.chat_message("assistant", avatar="output (1).png"):
         response = st.write_stream(stream)
     st.session_state.messages.append({"role": "assistant", "content": response})
