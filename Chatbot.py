@@ -11,7 +11,7 @@ config = configuration.load_config()
 
 st.set_page_config(layout='wide')
 
-st.title(f"{config['chatbot_name']}")
+st.title(f"{config['chatbot_name']}") 
 st.write(config["Subtitle"])
 
 key = os.getenv("OPENAI_API_KEY")
@@ -27,15 +27,21 @@ client = OpenAI(api_key=key)
 if "messages" not in st.session_state:
     st.session_state.messages = [{"role": "system", "content": entered_text}]
 
+# Define avatars
+user_avatar = "output (5).png"
+assistant_avatar = "output (1).png"
+
+# Display chat history with avatars
 for message in st.session_state.messages:
     if message["role"] != "system":
-        with st.chat_message(message["role"]):
+        with st.chat_message(message["role"], avatar=message.get("avatar", "")):  
             st.markdown(message["content"])
 
 if prompt := st.chat_input("Type in your queries here! "):
-    st.session_state.messages.append({"role": "user", "content": prompt})
-    
-    with st.chat_message("user", avatar="output (5).png"):
+    user_message = {"role": "user", "content": prompt, "avatar": user_avatar}
+    st.session_state.messages.append(user_message)
+
+    with st.chat_message("user", avatar=user_avatar):
         st.markdown(prompt)
 
     stream = client.chat.completions.create(
@@ -44,6 +50,8 @@ if prompt := st.chat_input("Type in your queries here! "):
         stream=True,
     )
 
-    with st.chat_message("assistant", avatar="output (1).png"):
+    with st.chat_message("assistant", avatar=assistant_avatar):
         response = st.write_stream(stream)
-    st.session_state.messages.append({"role": "assistant", "content": response})
+    
+    assistant_message = {"role": "assistant", "content": response, "avatar": assistant_avatar}
+    st.session_state.messages.append(assistant_message)
