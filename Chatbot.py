@@ -37,7 +37,7 @@ client = OpenAI(api_key=key)
 
 if "messages" not in st.session_state:
     st.session_state.messages = [{"role": "system", "content": entered_text},
-                                 {"role": "assistant", "content": "Hello I am Zack! Welcome to Rhino's Nest, how can I help you?", "avatar": "output (1).png"}]
+                                 {"role": "assistant", "content": "Hello! I am Zack. Welcome to Rhino's Nest, how can I help you?", "avatar": "output (1).png"}]
 
 # Define avatars
 user_avatar = "output (5).png"
