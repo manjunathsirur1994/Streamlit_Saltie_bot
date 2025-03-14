@@ -15,8 +15,8 @@ st.set_page_config(layout='wide')
 hide_streamlit_style = """
         <style>
         #MainMenu {visibility: hidden;}
-
-
+        [data-testid="stStatusWidget"] {display: none;}  /* Hide Running/Stop visuals */
+        [data-testid="stRunningIndicator"] {display: none;}  /* Hide running indicator */
         </style>
         """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
