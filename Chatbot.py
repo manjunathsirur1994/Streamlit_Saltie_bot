@@ -34,13 +34,21 @@ entered_text = config["Prompt"]
 
 client = OpenAI(api_key=key)
 
-
-
 if "messages" not in st.session_state:
     st.session_state.messages = [
         {"role": "system", "content": entered_text},
         {"role": "assistant", "content": "Hello! I am Zack. Welcome to Rhino's Nest, how can I help you?", "avatar": "output (1).png"}
     ]
+
+# Define avatars
+user_avatar = "output (5).png"
+assistant_avatar = "output (1).png"
+
+# Display chat history with avatars
+for message in st.session_state.messages:
+    if message["role"] != "system":
+        with st.chat_message(message["role"], avatar=message.get("avatar", "")):
+            st.markdown(message["content"])
 
 # Display prepopulated cards after the first bot message
 if len(st.session_state.messages) == 2:
@@ -54,17 +62,6 @@ if len(st.session_state.messages) == 2:
         st.page_link("https://highape.com/bangalore", label="Events Near Rhino's Nest")
     with col4:
         st.page_link("https://www.zomato.com/bangalore/red-rhino-whitefield-bangalore", label="Book a Table")
-        
-# Define avatars
-user_avatar = "output (5).png"
-assistant_avatar = "output (1).png"
-
-# Display chat history with avatars
-for message in st.session_state.messages:
-    if message["role"] != "system":
-        with st.chat_message(message["role"], avatar=message.get("avatar", "")):
-            st.markdown(message["content"])
-
 
 if prompt := st.chat_input("Type in your queries here! "):
     user_message = {"role": "user", "content": prompt, "avatar": user_avatar}
