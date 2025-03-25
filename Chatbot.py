@@ -53,7 +53,7 @@ for message in st.session_state.messages:
 # Display prepopulated cards after the first bot message
 if len(st.session_state.messages) == 2:
     # st.write("### Quick Links")
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3, col4, col5, col6= st.columns(6)
     with col1:
         st.page_link("https://d33luei2t0ywsm.cloudfront.net/booking", label="Book a Hotel Room")
     with col2:
@@ -62,6 +62,10 @@ if len(st.session_state.messages) == 2:
         st.page_link("https://highape.com/bangalore", label="Events Near Rhino's Nest")
     with col4:
         st.page_link("https://www.zomato.com/bangalore/red-rhino-whitefield-bangalore", label="Book a Table")
+    with col5:
+        st.page_link("https://maps.app.goo.gl/r6bYw8Jgxysb1KET8", label="Bangalore location")
+    with col6:
+        st.page_link("https://maps.app.goo.gl/1ULMxY4P7o9z3kNB9", label="Hyderabad location")
 
 if prompt := st.chat_input("Type in your queries here! "):
     user_message = {"role": "user", "content": prompt, "avatar": user_avatar}
