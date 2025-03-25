@@ -21,7 +21,6 @@ hide_streamlit_style = """
         """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-
 st.title(f"{config['chatbot_name']}") 
 st.write(config["Subtitle"])
 
@@ -35,10 +34,27 @@ entered_text = config["Prompt"]
 
 client = OpenAI(api_key=key)
 
-if "messages" not in st.session_state:
-    st.session_state.messages = [{"role": "system", "content": entered_text},
-                                 {"role": "assistant", "content": "Hello! I am Zack. Welcome to Rhino's Nest, how can I help you?", "avatar": "output (1).png"}]
 
+
+if "messages" not in st.session_state:
+    st.session_state.messages = [
+        {"role": "system", "content": entered_text},
+        {"role": "assistant", "content": "Hello! I am Zack. Welcome to Rhino's Nest, how can I help you?", "avatar": "output (1).png"}
+    ]
+
+# Display prepopulated cards after the first bot message
+if len(st.session_state.messages) == 2:
+    # st.write("### Quick Links")
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.page_link("https://d33luei2t0ywsm.cloudfront.net/booking", label="Book a Hotel Room")
+    with col2:
+        st.page_link("https://www.zomato.com/bangalore/red-rhino-whitefield-bangalore/menu", label="Food Menu")
+    with col3:
+        st.page_link("https://highape.com/bangalore", label="Events Near Rhino's Nest")
+    with col4:
+        st.page_link("https://www.zomato.com/bangalore/red-rhino-whitefield-bangalore", label="Book a Table")
+        
 # Define avatars
 user_avatar = "output (5).png"
 assistant_avatar = "output (1).png"
@@ -46,8 +62,9 @@ assistant_avatar = "output (1).png"
 # Display chat history with avatars
 for message in st.session_state.messages:
     if message["role"] != "system":
-        with st.chat_message(message["role"], avatar=message.get("avatar", "")):  
+        with st.chat_message(message["role"], avatar=message.get("avatar", "")):
             st.markdown(message["content"])
+
 
 if prompt := st.chat_input("Type in your queries here! "):
     user_message = {"role": "user", "content": prompt, "avatar": user_avatar}
