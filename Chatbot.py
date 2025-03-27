@@ -61,7 +61,7 @@ if len(st.session_state.messages) == 2:
     with col3:
         st.page_link("https://highape.com/bangalore", label="Events Near Rhino's Nest")
     with col4:
-        st.page_link("https://www.zomato.com/bangalore/red-rhino-whitefield-bangalore", label="Book a Table")
+        st.page_link("https://www.zomato.com/bangalore/red-rhino-whitefield-bangalore", label="Book a Table at Red Rhino")
 
 if prompt := st.chat_input("Type in your queries here! "):
     user_message = {"role": "user", "content": prompt, "avatar": user_avatar}
