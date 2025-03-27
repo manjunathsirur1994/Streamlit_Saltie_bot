@@ -57,9 +57,9 @@ if len(st.session_state.messages) == 2:
     with col1:
         st.page_link("https://d33luei2t0ywsm.cloudfront.net/booking", label="Book a Hotel Room")
     with col2:
-        st.page_link("https://www.zomato.com/bangalore/red-rhino-whitefield-bangalore/menu", label="Food Menu")
+        st.page_link("https://www.zomato.com/bangalore/red-rhino-whitefield-bangalore/menu", label="Red Rhino Food Menu")
     with col3:
-        st.page_link("https://highape.com/bangalore", label="Events Near Rhino's Nest")
+        st.page_link("https://highape.com/bangalore", label="Events Near us")
     with col4:
         st.page_link("https://www.zomato.com/bangalore/red-rhino-whitefield-bangalore", label="Book a Table at Red Rhino")
 
