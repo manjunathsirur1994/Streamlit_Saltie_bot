@@ -99,7 +99,7 @@ def write_query(state: State):
             "dialect": db.dialect,
             "top_k": 1000,
             "table_info": db.get_table_info(),
-            "input": f"{state["question"]}. Return equal to 1000 rows. Do not use LIMIT 1.",
+            "input": f"{state["question"]}. Return equal to 1000 rows. Do not use LIMIT 1 unless explicitly asked for it.",
         }
     )
     
