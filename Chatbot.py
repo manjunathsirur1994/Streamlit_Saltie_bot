@@ -71,7 +71,7 @@ if prompt := st.chat_input("Type in your queries here! "):
         st.markdown(prompt)
 
     stream = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-4.1-nano",
         messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages],
         stream=True,
     )
