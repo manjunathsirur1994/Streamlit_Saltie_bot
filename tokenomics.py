@@ -5,6 +5,7 @@ import tiktoken
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
+from flask_cors import CORS
 
 # Load environment variables
 load_dotenv()
@@ -12,6 +13,7 @@ key = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=key)
 
 app = Flask(__name__)
+CORS(app)
 
 def count_tokens(text: str, model: str = "gpt-3.5-turbo") -> int:
     encoding = tiktoken.encoding_for_model(model)
