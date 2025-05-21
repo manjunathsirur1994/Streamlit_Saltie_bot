@@ -109,5 +109,6 @@ Estimated cost for 10,000 conversations: ${total_cost * average_no_of_conversati
         "explanation": explanation
     })
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# Run Flask
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port= 8504, debug=True)
