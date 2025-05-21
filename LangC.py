@@ -59,6 +59,7 @@ from typing_extensions import TypedDict, Annotated
 from dotenv import load_dotenv
 import os
 import lcconfig
+from flask_cors import CORS
 
 # Load API key
 load_dotenv()
@@ -73,6 +74,7 @@ username, password, host, port, uri, db_name = (
 
 # Initialize Flask app
 app = Flask(__name__)
+CORS(app)
 
 # Setup database connection
 db = SQLDatabase.from_uri(f"{uri}://{username}:{password}@{host}:{port}/{db_name}")
